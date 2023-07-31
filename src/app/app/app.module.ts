@@ -4,9 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from "../pages/app-routing.module";
-import { HeaderModule } from "../shared/header/header.module";
 import { FeaturesModule } from "../features/features.module";
 import { AuthModule } from "../pages/auth/auth.module";
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { AuthModule } from "../pages/auth/auth.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HeaderModule,
+    SharedModule,
     AuthModule,
     FeaturesModule
   ],
