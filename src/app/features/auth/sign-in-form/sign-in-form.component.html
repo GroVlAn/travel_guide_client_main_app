@@ -1,0 +1,27 @@
+<form class="form sign_in_form" [formGroup]="signInForm" (ngSubmit)="signIn()">
+  <div class="form__items">
+    <div class="forms__item">
+      <label class="sign_in_form__label" for="sign-in-form-username">Логин:</label>
+      <input
+        class="sign_in_form__input this--full"
+        id="sign-in-form-username"
+        type="text"
+        formControlName="username"
+        placeholder="Введите логин или почту ..."
+      />
+    </div>
+  </div>
+  <div class="form__items">
+    <div class="forms__item">
+      <label class="sign_in_form__label" for="sign-in-form-password">Пароль:</label>
+      <input
+        class="sign_in_form__input this--full"
+        id="sign-in-form-password"
+        type="password"
+        formControlName="password"
+        placeholder="Введите пароль ..."
+      />
+    </div>
+  </div>
+  <button class="btn btn--big sign_in_form__button" type="submit">Войти</button>
+</form>

@@ -12,22 +12,25 @@
             <a routerLink="/" class="main_menu__link">Главная</a>
           </li>
           <li class="main_menu__item">
-            <a href="#" class="main_menu__link">Путешествия</a>
+            <a routerLink="#" class="main_menu__link">Путешествия</a>
           </li>
           <li class="main_menu__item">
-            <a href="#" class="main_menu__link">Карта</a>
+            <a routerLink="#" class="main_menu__link">Карта</a>
           </li>
         </ul>
       </nav>
-      <div class="header__auth auth">
+      <div class="header__auth auth" *ngIf="!accessToken">
         <div class="header__auth_wrapper">
           <div class="auth__sign_in">
             <a routerLink="/auth/sign-in" class="auth__link btn">Sign In</a>
           </div>
           <div class="auth__sign_up">
-            <a href="/auth/sign-up" class="auth__link btn">Sign Up</a>
+            <a routerLink="/auth/sign-up" class="auth__link btn">Sign Up</a>
           </div>
         </div>
+      </div>
+      <div class="header__auth auth" *ngIf="accessToken">
+        <button class="btn" type="button" (click)="logout()">Выйти</button>
       </div>
     </div>
   </div>

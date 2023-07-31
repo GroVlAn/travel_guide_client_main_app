@@ -1,0 +1,79 @@
+<form class="form sign_up_form" [formGroup]="signUpForm" (ngSubmit)="signUp()">
+  <div class="form__items form__items--fx">
+    <div class="form__item--50">
+      <label class="sign_up_form__label" for="sign-up-form-username">Логин:</label>
+      <input
+        class="sign_up_form__input this--full"
+        id="sign-up-form-username"
+        type="text"
+        formControlName="username"
+        placeholder="Login"
+      />
+    </div>
+    <div class="form__item--50">
+      <label class="sign_up_form__label" for="sign-up-form-email">Почта:</label>
+      <input
+        class="sign_up_form__input this--full"
+        id="sign-up-form-email"
+        type="email"
+        formControlName="email"
+        placeholder="example@example.com"
+      />
+    </div>
+  </div>
+  <div class="form__items form__items--fx">
+    <div class="form__item--33">
+      <label class="sign_up_form__label" for="sign-in-form-last-name">Файмилия:</label>
+      <input
+        class="sign_in_form__input this--full"
+        id="sign-in-form-last-name"
+        type="text"
+        formControlName="lastName"
+        placeholder="Иванов"
+      />
+    </div>
+    <div class="form__item--33">
+      <label class="sign_up_form__label" for="sign-in-form-first-name">Имя:</label>
+      <input
+        class="sign_in_form__input this--full"
+        id="sign-in-form-first-name"
+        type="text"
+        formControlName="firstName"
+        placeholder="Иван"
+      />
+    </div>
+    <div class="form__item--33">
+      <label class="sign_up_form__label" for="sign-in-form-middle-name">Отчество:</label>
+      <input
+        class="sign_in_form__input this--full"
+        id="sign-in-form-middle-name"
+        type="text"
+        formControlName="middleName"
+        placeholder="Иванович"
+      />
+    </div>
+  </div>
+  <div class="form__items form__items--fx">
+    <div class="form__item--50">
+      <label class="sign_up_form__label" for="sign-up-form-password">Пароль:</label>
+      <input
+        class="sign_up_form__input this--full"
+        id="sign-up-form-password"
+        type="password"
+        formControlName="password"
+        placeholder="Password"
+      />
+    </div>
+    <div class="form__item--50">
+      <label class="sign_up_form__label" for="sign-up-form-confirm-password">Подтверждение пароля:</label>
+      <input
+        class="sign_up_form__input this--full"
+        id="sign-up-form-confirm-password"
+        type="password"
+        formControlName="confirmPassword"
+        placeholder="Confirm password"
+      />
+    </div>
+  </div>
+  <button class="btn btn--big sign_up_form__button" type="submit">Зарегистрироваться</button>
+</form>
