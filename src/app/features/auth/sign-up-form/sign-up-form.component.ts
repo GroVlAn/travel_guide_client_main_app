@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from "@angular/forms";
 import { TSignInData, TSignUpForm } from "../types";
 import { AuthenticateService } from "../authenticate.service";
 import { Router } from "@angular/router";
+import { LoaderService } from "../../../shared/loader/loader.service";
 
 @Component({
   selector: 'app-sign-up-form',
@@ -14,7 +15,8 @@ export class SignUpFormComponent {
 
   constructor(
     private authService: AuthenticateService,
-    private router: Router
+    private router: Router,
+    private loaderService: LoaderService
   ) {
     this.signUpForm = new FormGroup<TSignUpForm>({
       username: new FormControl<string>(''),
@@ -35,6 +37,7 @@ export class SignUpFormComponent {
         this.router.navigate(['auth/sign-in']);
       },
       error: err => {
+        this.loaderService.changeLoadingStatus(false);
         console.log(err);
       }
     })
