@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { FormGroup, FormControl } from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AuthenticateService } from "../authenticate.service";
-import { TSignInForm } from "../types";
+import { TSignInError, TSignInForm } from "../types";
 import { Router } from "@angular/router";
 import { LoaderService } from "../../../shared/loader/loader.service";
+import { BehaviorSubject, Observable } from "rxjs";
 
 type TSignInData = {
   access_token: string
@@ -16,6 +17,7 @@ type TSignInData = {
 })
 export class SignInFormComponent {
   signInForm: FormGroup<TSignInForm>;
+  signInErrors: TSignInError
 
   constructor(
     private authenticateService: AuthenticateService,
@@ -23,13 +25,25 @@ export class SignInFormComponent {
     private loaderService: LoaderService
   ) {
     this.signInForm = new FormGroup({
-      username: new FormControl(''),
-      password: new FormControl('')
+      username: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
     });
+    this.signInErrors = {};
   }
 
   signIn() {
     const valueOfForm = this.signInForm.value;
+    this.signInErrors = {};
+
+    if (this.signInForm.controls.username.invalid) {
+      this.signInErrors.username = 'Поле не заполнено'
+      return;
+    }
+
+    if (this.signInForm.controls.password.invalid) {
+      this.signInErrors.password = 'Поле не заполнено'
+      return;
+    }
 
     this.authenticateService
       .signIn(valueOfForm.username, valueOfForm.password)
@@ -41,6 +55,7 @@ export class SignInFormComponent {
         error: error => {
           this.loaderService.changeLoadingStatus(false);
           console.log(error);
+          this.signInErrors.form = 'Неверный логин или пароль'
         }
       });
   }

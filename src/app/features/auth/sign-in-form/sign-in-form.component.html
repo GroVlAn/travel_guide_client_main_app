@@ -2,6 +2,9 @@
   <div class="form__items">
     <div class="forms__item">
       <label class="sign_in_form__label" for="sign-in-form-username">Логин:</label>
+      <div class="forms__error" *ngIf="signInErrors.form">
+        {{ signInErrors.form }}
+      </div>
       <input
         class="sign_in_form__input this--full"
         id="sign-in-form-username"
@@ -9,6 +12,9 @@
         formControlName="username"
         placeholder="Введите логин или почту ..."
       />
+      <div class="forms__error" *ngIf="signInErrors.username">
+        {{ signInErrors.username }}
+      </div>
     </div>
   </div>
   <div class="form__items">
@@ -21,6 +27,9 @@
         formControlName="password"
         placeholder="Введите пароль ..."
       />
+      <div class="forms__error" *ngIf="signInErrors.password">
+        {{ signInErrors.password }}
+      </div>
     </div>
   </div>
   <button class="btn btn--big sign_in_form__button" type="submit">Войти</button>

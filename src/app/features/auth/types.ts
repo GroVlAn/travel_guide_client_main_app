@@ -5,6 +5,12 @@ export type TSignInForm = {
   password: FormControl
 }
 
+export type TSignInError = {
+  username?: string,
+  password?: string,
+  form?: string
+}
+
 export type TSignUpForm = {
   username: FormControl,
   email: FormControl,
@@ -13,6 +19,17 @@ export type TSignUpForm = {
   middleName: FormControl,
   password: FormControl,
   confirmPassword: FormControl
+}
+
+export type TSignUpError = {
+  username?: string,
+  email?: string,
+  password: string[],
+  form?: string
+}
+
+export type TErrorResponse = {
+  loc: string[]
 }
 
 export type TSignInData = {

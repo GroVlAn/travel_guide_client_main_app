@@ -9,6 +9,9 @@
         formControlName="username"
         placeholder="Login"
       />
+      <div class="forms__error" *ngIf="signUpError.username">
+        {{ signUpError.username }}
+      </div>
     </div>
     <div class="form__item--50">
       <label class="sign_up_form__label" for="sign-up-form-email">Почта:</label>
@@ -19,6 +22,9 @@
         formControlName="email"
         placeholder="example@example.com"
       />
+      <div class="forms__error" *ngIf="signUpError.email">
+        {{ signUpError.email }}
+      </div>
     </div>
   </div>
   <div class="form__items form__items--fx">
@@ -63,6 +69,11 @@
         formControlName="password"
         placeholder="Password"
       />
+      <div class="forms__error" *ngIf="signUpError.password.length > 0">
+        <ul>
+          <li *ngFor="let error of signUpError.password">{{ error }}</li>
+        </ul>
+      </div>
     </div>
     <div class="form__item--50">
       <label class="sign_up_form__label" for="sign-up-form-confirm-password">Подтверждение пароля:</label>
